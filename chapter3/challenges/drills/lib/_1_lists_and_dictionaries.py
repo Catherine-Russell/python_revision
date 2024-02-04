@@ -20,7 +20,8 @@
 # Example:
 #   Call:    fourth_element([1, 2, 3, 4, 5])
 #   Returns: 4
-
+def fourth_element(lst):
+    return lst[3]
 
 
 # Method name: average
@@ -29,6 +30,9 @@
 # Example:
 #   Call:    average([3, 1, 44, 1])
 #   Returns: 12.25
+
+def average(lst):
+    return sum(lst)/len(lst)
 
 
 
@@ -39,6 +43,9 @@
 #   Call:    lowest_squared([5, 3, 44, 7])
 #   Returns: 9
 
+def lowest_squared(lst):
+    return min(lst)**2
+
 
 
 # Method name: highest_squared
@@ -47,7 +54,8 @@
 # Example:
 #   Call:    highest_squared([5, 3, 44, 7])
 #   Returns: 1936
-
+def highest_squared(lst):
+    return max(lst)**2
 
 
 # Method name: starts_with_a
@@ -57,6 +65,8 @@
 #   Call:    starts_with_a(['banana', 'apple', 'orange', 'avocado'])
 #   Returns: ['apple', 'avocado']
 
+def starts_with_a(lst):
+    return [word for word in lst if word[0] == 'a']
 
 
 # Method name: starts_with_a_vowel
@@ -66,7 +76,10 @@
 #   Call:    starts_with_a_vowel(['banana', 'apple', 'orange', 'avocado'])
 #   Returns: ['apple', 'orange', 'avocado']
 
-
+def starts_with_a_vowel(lst):
+    vowels = ['a', 'e', 'i', 'o', 'u']
+    vowel_words = filter(lambda word: any(letter in word[0] for letter in vowels), lst)
+    return list(vowel_words) 
 
 # Method name: reverse_each_element
 # Purpose: reverses each string in the given list
@@ -74,6 +87,9 @@
 # Example:
 #   Call:    reverse_each_element(['one', 'two'])
 #   Returns: ['eno', 'owt']
+
+def reverse_each_element(lst):
+    return list(map(lambda word : word[::-1], lst))
 
 
 
@@ -84,6 +100,9 @@
 #   Call:    sort_by_last_letter(['banana', 'apple', 'carrot', 'avocado'])
 #   Returns: ['banana', 'apple', 'avocado', 'carrot']
 
+def sort_by_last_letter(lst):
+    lst.sort(key=lambda word: word[-1])
+    return lst
 
 
 # Method name: greater_than_5
@@ -93,6 +112,8 @@
 #   Call:    greater_than_5([9, 3, 44, 7])
 #   Returns: [9, 44, 7]
 
+def greater_than_5(lst):
+    return [num for num in lst if num > 5]
 
 
 # Method name: greater_than
@@ -102,7 +123,8 @@
 #   Call:    greater_than([9, 3, 6, 44, 7, 7], 6)
 #   Returns: [9, 44, 7, 7]
 
-
+def greater_than(lst, x):
+    return [num for num in lst if x < num]
 
 # Method name: less_than
 # Purpose: returns only the elements that are less than the number provided
@@ -111,7 +133,8 @@
 #   Call:    less_than([9, 3, 6, 44, 1, 7, 7], 6)
 #   Returns: [3, 1]
 
-
+def less_than(lst, x):
+    return list(filter(lambda num : num < x, lst))
 
 # Method name: words_shorter_than
 # Purpose: returns only the elements that have fewer characters than the number provided
@@ -120,7 +143,8 @@
 #   Call:    words_shorter_than(['banana', 'apple', 'orange', 'nut', 'avocado'], 6)
 #   Returns: ['apple', 'nut']
 
-
+def words_shorter_than(lst, num):
+    return [word for word in lst if len(word) < num]
 
 # Method name: all_above
 # Purpose: returns True if all elements are greater than the number provided
@@ -131,7 +155,8 @@
 #   Call:    all_above([9, 3, 6, 44, 1, 7, 7], 0)
 #   Returns: True
 
-
+def all_above(lst, x):
+    return len([num for num in lst if num <= x]) == 0
 
 # Method name: all_below
 # Purpose: returns True if all elements are less than the number provided
@@ -142,7 +167,8 @@
 #   Call:    all_below([9, 3, 6, 44, 1, 7, 7], 100)
 #   Returns: True
 
-
+def all_below(lst, x):
+    return len([num for num in lst if num >= x]) == 0
 
 # Method name: multiply_each_by
 # Purpose: returns a new list with each element multiplied by the number provided
@@ -151,6 +177,8 @@
 #   Call:    multiply_each_by([9, 3, 6, 44, 1, 7, 7], 2)
 #   Returns: [18, 6, 12, 88, 2, 14, 14]
 
+def multiply_each_by(lst, x):
+    return list(map(lambda num:num*x, lst))
 
 
 # == DICTIONARY EXERCISES ==
@@ -162,7 +190,8 @@
 #   Call:    values_summed({'cat': 4, 'person': 2, 'centipede': 100})
 #   Returns: 106
 
-
+def values_summed(dct):
+    return sum(dct.values())
 
 # Method name: add_key_value_pair
 # Purpose: returns the dictionary with the new key and value added
@@ -171,6 +200,10 @@
 #   Call:    add_key_value_pair({'cat': 4, 'person': 2, 'centipede': 100}, 'dog', 4)
 #   Returns: {'cat': 4, 'person': 2, 'centipede': 100, 'dog': 4}
 
+def add_key_value_pair(dct, key, value):
+    # dct.update({key:value})
+    dct[key] = value
+    return dct
 
 
 # Method name: remove_key_value_pair
@@ -180,7 +213,9 @@
 #   Call:    remove_key_value_pair({'cat': 4, 'person': 2, 'centipede': 100}, 'cat')
 #   Returns: {'person': 2, 'centipede': 100}
 
-
+def remove_key_value_pair(dct, key):
+    del dct[key]
+    return dct
 
 # Method name: where_value_below
 # Purpose: returns key value pairs where the value is less than the number provided
@@ -189,7 +224,9 @@
 #   Call:    where_value_below({'cat': 4, 'person': 2, 'centipede': 100}, 5)
 #   Returns: {'cat': 4, 'person': 2}
 
-
+def where_value_below(dct, x):
+    new = dict(filter(lambda entry:entry[1] < x, dct.items()))
+    return new
 
 # Method name: where_key_starts_with
 # Purpose: returns key value pairs where the key starts with the letter provided
@@ -198,4 +235,6 @@
 #   Call:    where_key_starts_with({'cat': 4, 'person': 2, 'centipede': 100}, 'c')
 #   Returns: {'cat': 4, 'centipede': 100}
 
-
+def where_key_starts_with(dct, letter):
+    new = dict(filter(lambda entry:entry[0][0] == letter, dct.items()))
+    return new
